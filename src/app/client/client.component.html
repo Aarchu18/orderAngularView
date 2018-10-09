@@ -1,0 +1,53 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h2>Client Registration</h2>
+                <form autocomplete="off" [formGroup]="registerForm"  (ngSubmit)="onSubmit()">
+                        
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" maxlength="20"   formControlName="ClientName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ClientName.errors }" />
+                        <span *ngIf="!registerForm.controls['ClientName'].valid"></span>
+                        <div class="error-text" *ngIf="(f.ClientName.value.length !=0 && f.ClientName.errors)">
+                            
+                        Name is required (must be characters only)</div>
+    
+                    </div>
+                    <div class="form-group">
+                        <label>Contact</label>
+                        <input   formControlName="ClientContact"  (keypress)="contactKeyPress($event)" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ClientContact.errors }" />
+                        <div class="error-text" *ngIf="(f.ClientContact.value.length !=0 && f.ClientContact.errors)">Contact
+                            no is required(must consist of 10 numbers only)</div>
+    
+                        
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" maxlength="100" formControlName="ClientAddress" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ClientAddress.errors }" />
+                        <div class="error-text" *ngIf="(f.ClientAddress.value.length !=0 && f.ClientAddress.errors)">Address
+                            is required(must consist of 100 numbers only) </div>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label>ItemID</label><br>
+                        <select formControlName="ItemID">
+                            <option *ngFor="let item of itemIDList" [value]="item">{{item}}</option>
+                        </select>
+                        <!-- <input type="number" formControlName="ItemID" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ItemID.errors }" /> -->
+                        <!-- <div *ngIf="submitted && f.ItemID.errors" class="invalid-feedback">
+                            <div *ngIf="f.ItemID.errors.required">ItemID is required</div>
+                            
+                        </div>
+                    <!-- </div> --> 
+                    <div class="form-group">
+                        <button class="btn btn-primary" *ngIf="registerForm.invalid" style="cursor:no-drop" [disabled]="registerForm.invalid">Register</button>
+                    </div>
+    
+                    <div class="form-group">
+                        <button class="btn btn-primary" *ngIf="registerForm.valid" style="cursor:pointer" [disabled]="registerForm.invalid">Register</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h2>Item Registration</h2>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+          <div class="form-group">
+            <label>Item Name</label>
+            <input type="text" minlength="3" maxlength="50" formControlName="ItemName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ItemName.errors }" />
+
+            <div class="error-text" *ngIf="(f.ItemName.value.length !=0 && f.ItemName.errors)">
+              ItemName is required(Minimum 3 Character required) </div>
+          </div>
+          <div class="form-group">
+            <label>Item Category</label><br>
+
+            <select formControlName="ItemCategory">
+              <option [ngValue]="category" *ngFor="let category of categoryTotalList">{{category}}</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Item Quantity</label>
+            <input type="number" min="0" formControlName="ItemQuantity" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ItemQuantity.errors }" />
+            <div *ngIf="submitted && f.ItemQuantity.errors" class="invalid-feedback">
+              <div *ngIf="f.ItemQuantity.errors.required">ItemQuantity is required</div>
+
+            </div>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary" *ngIf="registerForm.invalid" style="cursor:no-drop" [disabled]="registerForm.invalid">Register</button>
+          </div>
+
+          <div class="form-group">
+            <button class="btn btn-primary" *ngIf="registerForm.valid" style="cursor:pointer" [disabled]="registerForm.invalid">Register</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+

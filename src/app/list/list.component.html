@@ -1,0 +1,60 @@
+<div class="jumbotron">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <h2>Order List</h2>
+        <form [formGroup]="registerForm">
+          <div class="form-group">
+            <div class="col-md-6">
+              <table id="list">
+                <tr>
+                  <th>Client Name</th>
+                  <th>Item Name</th>
+                  <th>Quantity</th>
+                  <th>Order Date</th>
+                </tr>
+                <tr *ngFor="let item of totalList; let i=index">
+                  <td>{{item.clientName}}</td>
+                  <td>{{item.itemName}}</td>
+                  <td>{{item.quantity}}</td>
+                  <td>{{item.orderDate | date}}</td>
+                  <td>
+                    <div class="form-group">
+                      <button class="btn btn-primary" mat-raised-button (click)="openDialog(item.orderId,i)">
+                        <i class="fa fa-edit" style="font-size:15px"></i>
+                        Edit
+                      </button>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <button class="btn btn-primary" (click)="delete(item.orderId,i)">
+                        <i class="fa fa-trash-o">
+                        </i>
+                        Delete
+                      </button>
+                    </div>
+                  </td>
+                  
+                </tr>
+              </table>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <modal id="custom-modal-1">
+  <div class="modal">
+      <div class="modal-body">
+          
+          <p>
+               <input type="text" [(ngModel)]="bodyText" />
+          </p>
+          <button (click)="closeModal('custom-modal-1');">Close</button>
+      </div>
+  </div>
+  <div class="modal-background"></div>
+</modal> -->
+

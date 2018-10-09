@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>Edit Order</h2>
+<!-- <mat-dialog-content>
+  Would you like to Save Changes?
+</mat-dialog-content> -->
+
+
+<form [formGroup]="profileForm">
+  <input type="hidden" formControlName="OrderId" [(ngModel)]="orderId" value="{{this.orderId}}">
+  <label>
+    <b> Client Name:</b>
+  </label>
+  <input type="text" formControlName="ClientName" [(ngModel)]="clientName" value="{{this.clientName}}"><br><br>
+  <label>
+    <b>Item Name:</b>
+  </label>
+  <input type="text" formControlName="ItemName" [(ngModel)]="itemName" value="{{this.itemName}}"><br><br>
+  <label>
+    <b>Quantity:</b>
+  </label>
+  <input type="text" formControlName="Quantity" [(ngModel)]="quantity" value="{{this.quantity}}"><br>
+  <!-- <label>
+    <b>Order Date:</b>
+  </label> -->
+  <input type="hidden" formControlName="OrderDate" [(ngModel)]="orderDate" value="{{this.orderDate}}" /><br>
+
+  <button class="btn btn-success" mat-raised-button type="button" style="margin: 20px" (click)="save()">Save</button>
+  
+  <button class="btn btn-danger" mat-button mat-dialog-close>Cancel</button>
+</form>
